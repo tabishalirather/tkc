@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --saffron: #E8A838;
+  --saffron-dark: #C17B2A;
+  --forest: #2D5016;
+  --cream: #FDF8F0;
+  --walnut: #5C3A1E;
+}
+
+body {
+  color: #1a1a1a;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--saffron);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--saffron-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+/* Custom components */
+.btn-primary {
+  @apply bg-saffron-500 text-white hover:bg-saffron-600 focus:ring-saffron-500;
+}
+
+.btn-secondary {
+  @apply bg-forest-500 text-white hover:bg-forest-600 focus:ring-forest-500;
+}
+
+.text-gradient {
+  background: linear-gradient(45deg, var(--saffron), var(--saffron-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Product card hover effects */
+.product-card {
+  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+.product-card:hover .product-image {
+  @apply scale-105;
+}
+
+.product-image {
+  @apply transition-transform duration-300;
+}
+
+/* Form styles */
+.form-input {
+  @apply block w-full rounded-lg border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-saffron-500 focus:outline-none focus:ring-1 focus:ring-saffron-500;
+}
+
+.form-input:focus {
+  @apply border-saffron-500 ring-1 ring-saffron-500;
+}
+
+.form-input.error {
+  @apply border-red-300 focus:border-red-500 focus:ring-red-500;
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Trust badges */
+.trust-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800;
+}
+
+/* Responsive text */
+@media (max-width: 640px) {
+  .text-responsive-lg {
+    @apply text-2xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-3xl;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive-lg {
+    @apply text-3xl;
+  }
+  
+  .text-responsive-xl {
+    @apply text-4xl;
+  }
+}
+
+/* Hero section styles */
+.hero-bg {
+  background-image: linear-gradient(rgba(45, 80, 22, 0.7), rgba(193, 123, 42, 0.7)), url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-attachment: scroll;
+  }
+}
