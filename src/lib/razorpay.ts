@@ -1,4 +1,5 @@
 import Razorpay from 'razorpay'
+import crypto from 'crypto'
 
 export const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID!,
@@ -24,7 +25,6 @@ export const verifyRazorpaySignature = (
   razorpayPaymentId: string,
   razorpaySignature: string
 ) => {
-  const crypto = require('crypto')
   const secret = process.env.RAZORPAY_KEY_SECRET!
   
   const body = razorpayOrderId + '|' + razorpayPaymentId

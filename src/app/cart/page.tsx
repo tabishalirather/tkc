@@ -4,6 +4,10 @@ import { useCartStore } from '@/store/cartStore'
 import Button from '@/components/ui/Button'
 import Link from 'next/link'
 
+const TAX_RATE = 0.18
+const FREE_SHIPPING_THRESHOLD = 1000
+const SHIPPING_FEE = 50
+
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, getTotal } = useCartStore()
 
