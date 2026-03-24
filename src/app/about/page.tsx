@@ -8,7 +8,7 @@ export default function AboutPage() {
             Our Story
           </h1>
           <p className="text-xl text-cream-100 max-w-3xl mx-auto">
-            Born from a passion for authentic Kashmiri products and a mission to connect 
+            Born from a passion for authentic Kashmiri products and a mission to connect
             the beauty of Kashmir with the world.
           </p>
         </div>
@@ -24,20 +24,20 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-gray-600">
               <p>
-                The Kashmir Co. was founded with a simple yet profound vision: to bring the authentic 
-                taste and quality of Kashmir's finest products directly to your doorstep. Our journey 
-                began in the pristine valleys of Kashmir, where we witnessed the incredible craftsmanship 
+                The Kashmir Co. was founded with a simple yet profound vision: to bring the authentic
+                taste and quality of Kashmir's finest products directly to your doorstep. Our journey
+                began in the pristine valleys of Kashmir, where we witnessed the incredible craftsmanship
                 and natural bounty that this region has to offer.
               </p>
               <p>
-                For generations, Kashmiri farmers and artisans have perfected the art of cultivating and 
-                harvesting some of the world's most precious natural products. From the golden threads of 
-                saffron to the ancient wisdom of pure shilajit, each product tells a story of tradition, 
+                For generations, Kashmiri farmers and artisans have perfected the art of cultivating and
+                harvesting some of the world's most precious natural products. From the golden threads of
+                saffron to the ancient wisdom of pure shilajit, each product tells a story of tradition,
                 quality, and unwavering dedication.
               </p>
               <p>
-                We work directly with local farmers and cooperatives, ensuring fair trade practices while 
-                maintaining the highest quality standards. Every product in our collection is carefully 
+                We work directly with local farmers and cooperatives, ensuring fair trade practices while
+                maintaining the highest quality standards. Every product in our collection is carefully
                 selected, tested, and packaged to preserve its authenticity and nutritional value.
               </p>
             </div>
@@ -67,8 +67,8 @@ export default function AboutPage() {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Our Mission</h3>
             <p className="text-gray-600">
-              To preserve and promote the authentic products of Kashmir while supporting local communities 
-              and sustainable farming practices. We aim to be the bridge between Kashmir's natural treasures 
+              To preserve and promote the authentic products of Kashmir while supporting local communities
+              and sustainable farming practices. We aim to be the bridge between Kashmir's natural treasures
               and conscious consumers worldwide.
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Our Vision</h3>
             <p className="text-gray-600">
-              To become the most trusted name for authentic Kashmiri products globally, creating a sustainable 
+              To become the most trusted name for authentic Kashmiri products globally, creating a sustainable
               ecosystem that benefits farmers, preserves traditions, and delivers exceptional value to our customers.
             </p>
           </div>
@@ -147,7 +147,7 @@ export default function AboutPage() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">Meet Our Team</h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Our passionate team works tirelessly to bring you the finest Kashmir has to offer, 
+                Our passionate team works tirelessly to bring you the finest Kashmir has to offer,
                 combining traditional knowledge with modern quality standards.
               </p>
             </div>
@@ -155,22 +155,28 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Rahul Kumar",
-                  role: "Founder & CEO",
-                  image: "https://placehold.co/300x300/2D5016/ffffff?text=RK",
+                  name: "Tabish Ali Rather",
+                  role: "Founder & CTO",
+                  image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
                   bio: "A Kashmir native passionate about sharing authentic products with the world."
                 },
                 {
-                  name: "Priya Sharma",
+                  name: "Shahid Ul Islam",
                   role: "Head of Quality",
-                  image: "https://placehold.co/300x300/E8A838/ffffff?text=PS",
+                  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80",
                   bio: "Expert in traditional Kashmir products with over 15 years of experience."
                 },
                 {
-                  name: "Amit Singh",
+                  name: "Haroon Yousuf",
                   role: "Supply Chain Director",
-                  image: "https://placehold.co/300x300/C17B2A/ffffff?text=AS",
+                  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
                   bio: "Ensures direct relationships with farmers and maintains quality standards."
+                },
+                {
+                  name: "Zahid Ali",
+                  role: "Managing Director",
+                  image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+                  bio: "Takes care of the overall operations and strategic direction of the company."
                 }
               ].map((member, index) => (
                 <div key={index} className="bg-white rounded-xl p-6 text-center shadow-sm">
@@ -194,7 +200,7 @@ export default function AboutPage() {
             Ready to Experience Authentic Kashmir?
           </h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust us for genuine Kashmiri products. 
+            Join thousands of satisfied customers who trust us for genuine Kashmiri products.
             Start your journey with Kashmir's finest today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

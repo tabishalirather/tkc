@@ -19,7 +19,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1)
   const { addItem } = useCartStore()
   const { addItem: addToWishlist, removeItem: removeFromWishlist, isInWishlist } = useWishlistStore()
-  
+
   const isProductInWishlist = isInWishlist(product.id)
 
   const handleAddToCart = () => {
@@ -45,7 +45,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         {/* Main Image */}
         <div className="aspect-square relative rounded-lg overflow-hidden bg-gray-100">
           <Image
-            src={product.images[selectedImageIndex] || `https://placehold.co/600x600?text=${encodeURIComponent(product.name)}`}
+            src={product.images[selectedImageIndex] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=1200&q=80'}
             alt={product.name}
             fill
             className="object-cover"
@@ -71,12 +71,11 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <button
                 key={index}
                 onClick={() => setSelectedImageIndex(index)}
-                className={`aspect-square relative rounded-lg overflow-hidden bg-gray-100 border-2 transition-colors ${
-                  selectedImageIndex === index ? 'border-saffron-500' : 'border-transparent'
-                }`}
+                className={`aspect-square relative rounded-lg overflow-hidden bg-gray-100 border-2 transition-colors ${selectedImageIndex === index ? 'border-saffron-500' : 'border-transparent'
+                  }`}
               >
                 <Image
-                  src={image || `https://placehold.co/150x150?text=${encodeURIComponent(product.name)}`}
+                  src={image || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=400&q=80'}
                   alt={`${product.name} ${index + 1}`}
                   fill
                   className="object-cover"
@@ -106,11 +105,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
-                  className={`w-5 h-5 ${
-                    i < Math.floor(product.averageRating!)
+                  className={`w-5 h-5 ${i < Math.floor(product.averageRating!)
                       ? 'text-yellow-400'
                       : 'text-gray-300'
-                  }`}
+                    }`}
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -157,11 +155,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <button
                   key={variant.id}
                   onClick={() => setSelectedVariant(variant)}
-                  className={`p-3 border rounded-lg text-center transition-colors ${
-                    selectedVariant?.id === variant.id
+                  className={`p-3 border rounded-lg text-center transition-colors ${selectedVariant?.id === variant.id
                       ? 'border-saffron-500 bg-saffron-50'
                       : 'border-gray-300 hover:border-saffron-300'
-                  }`}
+                    }`}
                 >
                   <div className="font-medium">{variant.name}</div>
                   <div className="text-sm text-gray-600">{variant.weight}</div>
@@ -220,14 +217,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <p className="text-gray-600 text-sm">{product.benefits}</p>
             </div>
           )}
-          
+
           {product.ingredients && (
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">Ingredients</h3>
               <p className="text-gray-600 text-sm">{product.ingredients}</p>
             </div>
           )}
-          
+
           {product.usage && (
             <div>
               <h3 className="font-semibold text-gray-900 mb-2">Usage</h3>

@@ -18,7 +18,7 @@ export default function CheckoutPage() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const { items, getTotal, clearCart } = useCartStore()
-  
+
   const [addresses, setAddresses] = useState<Address[]>([])
   const [selectedAddressId, setSelectedAddressId] = useState('')
   const [couponCode, setCouponCode] = useState('')
@@ -26,7 +26,7 @@ export default function CheckoutPage() {
   const [couponId, setCouponId] = useState<string>('')
   const [loading, setLoading] = useState(false)
   const [couponLoading, setCouponLoading] = useState(false)
-  
+
   const subtotal = getTotal()
   const shipping = subtotal > 1000 ? 0 : 50
   const tax = 0
@@ -34,7 +34,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (status === 'loading') return
-    
+
     if (status === 'unauthenticated') {
       router.push('/auth/login?callbackUrl=/checkout')
       return
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
       })
 
       const result = await response.json()
-      
+
       if (result.success) {
         setCouponDiscount(result.data.discount)
         setCouponId(result.data.couponId)
@@ -145,7 +145,7 @@ export default function CheckoutPage() {
       })
 
       const orderResult = await orderResponse.json()
-      
+
       if (!orderResult.success) {
         throw new Error(orderResult.error || 'Failed to create order')
       }
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
             })
 
             const verifyResult = await verifyResponse.json()
-            
+
             if (verifyResult.success) {
               clearCart()
               router.push(`/order/success?orderId=${orderResult.data.orderId}`)
@@ -227,14 +227,14 @@ export default function CheckoutPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">Checkout</h1>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left Column - Forms */}
             <div className="space-y-6">
               {/* Shipping Address */}
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">Shipping Address</h2>
-                
+
                 {addresses.length === 0 ? (
                   <div className="text-center py-8">
                     <p className="text-gray-600 mb-4">No addresses found</p>
@@ -247,11 +247,10 @@ export default function CheckoutPage() {
                     {addresses.map((address) => (
                       <label
                         key={address.id}
-                        className={`block p-4 border rounded-lg cursor-pointer transition-colors ${
-                          selectedAddressId === address.id
+                        className={`block p-4 border rounded-lg cursor-pointer transition-colors ${selectedAddressId === address.id
                             ? 'border-saffron-500 bg-saffron-50'
                             : 'border-gray-300 hover:border-saffron-300'
-                        }`}
+                          }`}
                       >
                         <input
                           type="radio"
@@ -288,7 +287,7 @@ export default function CheckoutPage() {
               {/* Coupon Code */}
               <div className="bg-white rounded-lg shadow-sm p-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">Coupon Code</h2>
-                
+
                 {couponDiscount > 0 ? (
                   <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
                     <div>
@@ -330,14 +329,14 @@ export default function CheckoutPage() {
             {/* Right Column - Order Summary */}
             <div className="bg-white rounded-lg shadow-sm p-6 h-fit">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Order Summary</h2>
-              
+
               {/* Order Items */}
               <div className="space-y-4 mb-6">
                 {items.map((item) => (
                   <div key={item.id} className="flex space-x-3">
                     <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
                       <Image
-                        src={item.product.images[0] || `https://placehold.co/64x64?text=${encodeURIComponent(item.product.name)}`}
+                        src={item.product.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=200&q=80'}
                         alt={item.product.name}
                         width={64}
                         height={64}

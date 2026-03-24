@@ -29,7 +29,7 @@ export default function CategoryHighlights() {
 
   if (loading) {
     return (
-      <section className="py-16 bg-cream-50">
+      <section className="bg-[#efefed] py-14 md:py-20">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-saffron-500 mx-auto mb-4"></div>
@@ -40,136 +40,73 @@ export default function CategoryHighlights() {
     )
   }
 
+  const featuredTiles = categories.slice(0, 4)
+
   return (
-    <section className="py-16 bg-cream-50">
+    <section className="bg-[#efefed] py-14 md:py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-            Shop by Category
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore our curated collection of authentic Kashmiri products, 
-            each category offering unique treasures from the paradise of Kashmir.
-          </p>
+        <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div className="max-w-2xl">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-walnut-500">Categories</p>
+            <h2 className="text-3xl font-serif font-semibold text-walnut-900 md:text-4xl">
+              Explore our range
+            </h2>
+            <p className="mt-3 text-walnut-700">
+              An editorial collection of essentials from Kashmir, curated for daily use and long-term quality.
+            </p>
+          </div>
+
+          <Link href="/shop" className="inline-flex items-center text-sm font-medium text-walnut-900 hover:text-saffron-700">
+            View all products
+            <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {categories.map((category) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {featuredTiles.map((category, index) => (
             <Link
               key={category.id}
               href={`/category/${category.slug}`}
               className="group"
             >
-              <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
-                <div className="aspect-[4/3] relative bg-gradient-to-br from-saffron-100 to-amber-100">
+              <article className={`relative overflow-hidden rounded-sm bg-white ${index === 0 ? 'md:col-span-2' : ''}`}>
+                <div className={`relative ${index === 0 ? 'aspect-[21/9]' : 'aspect-[6/5]'} bg-gradient-to-br from-cream to-saffron-100`}>
                   {category.image ? (
                     <Image
                       src={category.image}
                       alt={category.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-200"
+                      className="object-cover transition duration-500 group-hover:scale-[1.04]"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 bg-saffron-200 rounded-full flex items-center justify-center">
-                        <svg className="w-10 h-10 text-saffron-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
+                      <div className="rounded-sm bg-white/90 px-4 py-2 text-sm text-walnut-700">
+                        {category.name}
                       </div>
                     </div>
                   )}
-                  <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-200"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white text-xl font-serif font-bold mb-1 group-hover:text-saffron-100 transition-colors">
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/10 to-black/50" />
+
+                  <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                    <p className="text-xs uppercase tracking-[0.14em] text-cream-100">{category._count?.products || 0} items</p>
+                    <h3 className="mt-1 font-serif text-2xl font-semibold text-white md:text-3xl">
                       {category.name}
                     </h3>
-                    <p className="text-white text-sm opacity-90">
-                      {category._count?.products || 0} products
+                    {category.description && (
+                      <p className="mt-1 line-clamp-2 max-w-lg text-sm text-cream-100/90">
+                        {category.description}
+                      </p>
+                    )}
+                    <p className="mt-2 text-sm font-medium text-saffron-200 group-hover:text-saffron-100">
+                      Shop collection &gt;
                     </p>
                   </div>
                 </div>
-                
-                {category.description && (
-                  <div className="p-4">
-                    <p className="text-gray-600 text-sm line-clamp-2">
-                      {category.description}
-                    </p>
-                  </div>
-                )}
-              </div>
+              </article>
             </Link>
           ))}
-        </div>
-
-        {/* Featured Categories */}
-        <div className="mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Saffron Highlight */}
-            <div className="bg-gradient-to-br from-saffron-500 to-amber-500 rounded-lg p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-2xl">🌺</span>
-                </div>
-                <h3 className="text-xl font-serif font-bold">Kashmir Saffron</h3>
-              </div>
-              <p className="text-saffron-100 mb-4">
-                World's finest saffron with the highest crocin content, sourced from the fields of Pampore.
-              </p>
-              <Link 
-                href="/category/saffron"
-                className="inline-flex items-center text-white font-medium hover:text-saffron-100 transition-colors"
-              >
-                Shop Saffron
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            {/* Shilajit Highlight */}
-            <div className="bg-gradient-to-br from-forest-600 to-forest-800 rounded-lg p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-2xl">⛰️</span>
-                </div>
-                <h3 className="text-xl font-serif font-bold">Pure Shilajit</h3>
-              </div>
-              <p className="text-green-100 mb-4">
-                Authentic Himalayan Shilajit, nature's most powerful adaptogen for vitality and wellness.
-              </p>
-              <Link 
-                href="/category/shilajit"
-                className="inline-flex items-center text-white font-medium hover:text-green-100 transition-colors"
-              >
-                Shop Shilajit
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-
-            {/* Walnuts Highlight */}
-            <div className="bg-gradient-to-br from-walnut-500 to-walnut-700 rounded-lg p-8 text-white">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                  <span className="text-2xl">🌰</span>
-                </div>
-                <h3 className="text-xl font-serif font-bold">Kashmiri Walnuts</h3>
-              </div>
-              <p className="text-amber-100 mb-4">
-                Premium quality walnuts from Kashmir, known for their rich taste and nutritional value.
-              </p>
-              <Link 
-                href="/category/walnuts"
-                className="inline-flex items-center text-white font-medium hover:text-amber-100 transition-colors"
-              >
-                Shop Walnuts
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </section>

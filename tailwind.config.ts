@@ -56,8 +56,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['Cormorant Garamond', 'serif'],
+        sans: ['Manrope', 'sans-serif'],
       },
       container: {
         center: true,

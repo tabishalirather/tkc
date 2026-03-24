@@ -11,11 +11,11 @@ async function getProduct(slug: string): Promise<Product | null> {
     const response = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/products/${slug}`, {
       next: { revalidate: 60 }
     })
-    
+
     if (!response.ok) {
       return null
     }
-    
+
     const result = await response.json()
     return result.success ? result.data : null
   } catch (error) {
@@ -32,11 +32,11 @@ async function getRelatedProducts(categoryId: string, currentProductId: string):
         next: { revalidate: 300 }
       }
     )
-    
+
     if (!response.ok) {
       return []
     }
-    
+
     const result = await response.json()
     return result.success ? result.data : []
   } catch (error) {
@@ -47,7 +47,7 @@ async function getRelatedProducts(categoryId: string, currentProductId: string):
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.slug)
-  
+
   if (!product) {
     notFound()
   }
@@ -100,9 +100,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         {[...Array(5)].map((_, i) => (
                           <svg
                             key={i}
-                            className={`w-4 h-4 ${
-                              i < review.rating ? 'text-yellow-400' : 'text-gray-300'
-                            }`}
+                            className={`w-4 h-4 ${i < review.rating ? 'text-yellow-400' : 'text-gray-300'
+                              }`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -134,7 +133,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <a href={`/product/${relatedProduct.slug}`}>
                       <div className="aspect-square relative rounded-lg overflow-hidden bg-gray-100 mb-3">
                         <img
-                          src={relatedProduct.images[0] || `https://placehold.co/300x300?text=${encodeURIComponent(relatedProduct.name)}`}
+                          src={relatedProduct.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=900&q=80'}
                           alt={relatedProduct.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
                         />
@@ -159,7 +158,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const product = await getProduct(params.slug)
-  
+
   if (!product) {
     return {
       title: 'Product Not Found'
@@ -172,7 +171,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     openGraph: {
       title: product.name,
       description: product.shortDescription || product.description,
-      images: [product.images[0] || `https://placehold.co/600x600?text=${encodeURIComponent(product.name)}`],
+      images: [product.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=1200&q=80'],
     },
   }
 }

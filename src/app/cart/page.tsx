@@ -54,12 +54,12 @@ export default function CartPage() {
                 <div className="space-y-6">
                   {items.map((item) => {
                     const price = item.variant?.discountPrice || item.variant?.price || item.product.discountPrice || item.product.price
-                    
+
                     return (
                       <div key={`${item.productId}-${item.variantId || 'default'}`} className="flex items-center space-x-4 border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
                         <div className="flex-shrink-0">
                           <img
-                            src={item.product.images[0] || 'https://placehold.co/120x120'}
+                            src={item.product.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=300&q=80'}
                             alt={item.product.name}
                             className="w-20 h-20 object-cover rounded-lg"
                           />
@@ -71,7 +71,7 @@ export default function CartPage() {
                             <p className="text-sm text-gray-500 mt-1">{item.variant.name}</p>
                           )}
                           <p className="text-saffron-600 font-semibold mt-1">₹{price.toFixed(2)}</p>
-                          
+
                           {/* Stock status */}
                           {item.product.stock > 0 ? (
                             <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mt-2">
@@ -140,7 +140,7 @@ export default function CartPage() {
           <div className="lg:col-span-4 mt-8 lg:mt-0">
             <div className="bg-white rounded-lg shadow-sm p-6 sticky top-4">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h2>
-              
+
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Subtotal</span>
@@ -156,13 +156,13 @@ export default function CartPage() {
                   <span className="text-gray-600">Tax</span>
                   <span className="text-gray-900">₹{(getTotal() * 0.18).toFixed(2)}</span>
                 </div>
-                
+
                 {getTotal() >= 1000 && (
                   <div className="bg-green-50 p-3 rounded-lg">
                     <p className="text-sm text-green-800 font-medium">🎉 You qualify for free shipping!</p>
                   </div>
                 )}
-                
+
                 <div className="border-t border-gray-200 pt-3">
                   <div className="flex justify-between">
                     <span className="text-lg font-semibold text-gray-900">Total</span>

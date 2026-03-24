@@ -28,7 +28,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const fetchCategoryData = async () => {
     try {
       setLoading(true)
-      
+
       // Fetch category info
       const categoryResponse = await fetch(`/api/categories/${params.slug}`)
       if (categoryResponse.ok) {
@@ -125,7 +125,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 {products.length} Products
               </span>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Sort */}
               <div className="flex items-center space-x-2">
@@ -186,7 +186,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 <Link href={`/product/${product.slug}`}>
                   <div className="aspect-square relative bg-gray-100">
                     <Image
-                      src={product.images[0] || `https://placehold.co/300x300?text=${encodeURIComponent(product.name)}`}
+                      src={product.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=900&q=80'}
                       alt={product.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-200"
@@ -205,20 +205,20 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                     )}
                   </div>
                 </Link>
-                
+
                 <div className="p-4">
                   <Link href={`/product/${product.slug}`}>
                     <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-saffron-600 transition-colors line-clamp-2">
                       {product.name}
                     </h3>
                   </Link>
-                  
+
                   {product.shortDescription && (
                     <p className="text-gray-600 text-sm mb-3 line-clamp-2">
                       {product.shortDescription}
                     </p>
                   )}
-                  
+
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-2">
                       <span className="text-lg font-bold text-gray-900">
@@ -230,7 +230,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                         </span>
                       )}
                     </div>
-                    
+
                     {product.averageRating && (
                       <div className="flex items-center">
                         <svg className="w-4 h-4 text-yellow-400 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -242,7 +242,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                       </div>
                     )}
                   </div>
-                  
+
                   <Button
                     onClick={() => handleAddToCart(product)}
                     className="w-full"

@@ -13,7 +13,7 @@ export default function CartDrawer() {
     <div className="fixed inset-0 z-50 overflow-hidden">
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black bg-opacity-50" onClick={closeCart} />
-      
+
       {/* Drawer */}
       <div className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl">
         <div className="flex h-full flex-col">
@@ -46,11 +46,11 @@ export default function CartDrawer() {
               <div className="space-y-4">
                 {items.map((item) => {
                   const price = item.variant?.discountPrice || item.variant?.price || item.product.discountPrice || item.product.price
-                  
+
                   return (
                     <div key={`${item.productId}-${item.variantId || 'default'}`} className="flex items-center space-x-3 border-b pb-4">
                       <img
-                        src={item.product.images[0] || 'https://placehold.co/80x80'}
+                        src={item.product.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=240&q=80'}
                         alt={item.product.name}
                         className="w-16 h-16 object-cover rounded"
                       />
@@ -60,7 +60,7 @@ export default function CartDrawer() {
                           <p className="text-sm text-gray-500">{item.variant.name}</p>
                         )}
                         <p className="text-saffron-600 font-semibold">₹{price.toFixed(2)}</p>
-                        
+
                         {/* Quantity controls */}
                         <div className="flex items-center space-x-2 mt-2">
                           <button

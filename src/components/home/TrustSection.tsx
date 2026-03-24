@@ -1,147 +1,58 @@
 export default function TrustSection() {
-  const features = [
+  const pillars = [
     {
-      icon: "🏔️",
-      title: "Direct from Kashmir",
-      description: "Sourced directly from the valleys of Kashmir, ensuring authenticity and quality."
+      title: 'Directly sourced',
+      description: 'We partner with trusted growers and cooperatives across Kashmir.',
+      cta: 'Read our story',
+      href: '/about',
+      image: 'https://images.unsplash.com/photo-1617104551722-3b2d51366471?auto=format&fit=crop&w=320&q=80'
     },
     {
-      icon: "✅",
-      title: "Quality Guaranteed",
-      description: "Each product undergoes rigorous quality testing and comes with a certificate of authenticity."
+      title: 'Small-batch quality',
+      description: 'Each batch is checked for aroma, purity, and consistency before shipping.',
+      cta: 'How we test',
+      href: '/about',
+      image: 'https://images.unsplash.com/photo-1611071536598-9b7d8f15189f?auto=format&fit=crop&w=320&q=80'
     },
     {
-      icon: "📦",
-      title: "Secure Packaging",
-      description: "Carefully packaged to preserve freshness and quality during transit."
+      title: 'Freshness protected',
+      description: 'Protective packing and quick dispatch preserve flavor and nutrition.',
+      cta: 'Shipping details',
+      href: '/contact',
+      image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=320&q=80'
     },
     {
-      icon: "🚚",
-      title: "Fast Delivery",
-      description: "Quick and reliable delivery across India with real-time tracking."
-    },
-    {
-      icon: "🛡️",
-      title: "Secure Payments",
-      description: "SSL encrypted payments with multiple payment options for your convenience."
-    },
-    {
-      icon: "🔄",
-      title: "Easy Returns",
-      description: "15-day return policy with full refund if you're not completely satisfied."
+      title: 'Trusted by families',
+      description: 'A growing customer base returns for transparent sourcing and reliable quality.',
+      cta: 'Customer reviews',
+      href: '/shop',
+      image: 'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?auto=format&fit=crop&w=320&q=80'
     }
   ]
 
-  const stats = [
-    { number: "50,000+", label: "Happy Customers" },
-    { number: "100%", label: "Authentic Products" },
-    { number: "15+", label: "Years of Experience" },
-    { number: "24/7", label: "Customer Support" }
-  ]
-
   return (
-    <section className="py-16 bg-white">
+    <section className="bg-white py-14 md:py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-            Why Choose The Kashmir Co?
+        <div className="text-center">
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.16em] text-walnut-500">Why choose us</p>
+          <h2 className="font-serif text-3xl font-semibold text-walnut-900 md:text-4xl">
+            Built with care, not noise
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We are committed to bringing you the finest authentic products from Kashmir 
-            with complete transparency and trust.
-          </p>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl font-bold text-saffron-600 mb-2">
-                {stat.number}
+        <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {pillars.map((pillar) => (
+            <article key={pillar.title} className="text-center">
+              <div className="mx-auto h-36 w-36 overflow-hidden rounded-full bg-cream-100">
+                <img src={pillar.image} alt={pillar.title} className="h-full w-full object-cover" />
               </div>
-              <div className="text-gray-600 text-sm">
-                {stat.label}
-              </div>
-            </div>
+              <h3 className="mt-5 text-2xl font-serif font-medium text-walnut-900">{pillar.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-walnut-700">{pillar.description}</p>
+              <a href={pillar.href} className="mt-4 inline-block text-xs font-medium uppercase tracking-[0.14em] text-saffron-700 hover:text-saffron-600">
+                {pillar.cta} &gt;
+              </a>
+            </article>
           ))}
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="text-center group">
-              <div className="w-16 h-16 mx-auto mb-4 text-4xl flex items-center justify-center">
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-saffron-600 transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Certifications */}
-        <div className="mt-16 bg-cream-50 rounded-lg p-8">
-          <h3 className="text-2xl font-serif font-bold text-gray-900 text-center mb-8">
-            Our Certifications & Partnerships
-          </h3>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
-                <span className="text-2xl">🏅</span>
-              </div>
-              <p className="text-sm font-medium text-gray-700">ISO Certified</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
-                <span className="text-2xl">🧪</span>
-              </div>
-              <p className="text-sm font-medium text-gray-700">Lab Tested</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
-                <span className="text-2xl">🌱</span>
-              </div>
-              <p className="text-sm font-medium text-gray-700">Organic Certified</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-sm">
-                <span className="text-2xl">🤝</span>
-              </div>
-              <p className="text-sm font-medium text-gray-700">Fair Trade</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Trust Badges */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center space-x-8 text-sm text-gray-600">
-            <div className="flex items-center">
-              <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              SSL Secured
-            </div>
-            <div className="flex items-center">
-              <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              Trusted by 50,000+
-            </div>
-            <div className="flex items-center">
-              <svg className="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              15-Day Returns
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-# The Kashmir Co. (TKC) - Premium Kashmiri Products E-commerce Platform
+# The Kashmir Chapter. (TKC) - Premium Kashmiri Products E-commerce Platform
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)

@@ -13,7 +13,7 @@ const sampleProducts = [
     discountPrice: 2699,
     stock: 50,
     categoryId: '1',
-    images: ['https://placehold.co/400x400/E8A838/ffffff?text=Saffron'],
+    images: ['https://images.unsplash.com/photo-1611071536598-9b7d8f15189f?auto=format&fit=crop&w=800&q=80'],
     badges: ['Premium', 'Organic'],
     sku: 'TKC-SAFFRON-001',
     isFeatured: true,
@@ -31,7 +31,7 @@ const sampleProducts = [
     discountPrice: 4499,
     stock: 25,
     categoryId: '2',
-    images: ['https://placehold.co/400x400/5C3A1E/ffffff?text=Shilajit'],
+    images: ['https://images.unsplash.com/photo-1603048719539-9ecb4f1f5f9a?auto=format&fit=crop&w=800&q=80'],
     badges: ['Pure', 'Lab Tested'],
     sku: 'TKC-SHILAJIT-001',
     isFeatured: true,
@@ -49,7 +49,7 @@ const sampleProducts = [
     discountPrice: 799,
     stock: 100,
     categoryId: '3',
-    images: ['https://placehold.co/400x400/C17B2A/ffffff?text=Walnuts'],
+    images: ['https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=800&q=80'],
     badges: ['Fresh', 'Premium'],
     sku: 'TKC-WALNUT-001',
     isFeatured: false,
@@ -69,7 +69,7 @@ export default function ShopPage() {
             Shop Authentic Kashmir
           </h1>
           <p className="text-xl text-saffron-100 max-w-2xl mx-auto">
-            Discover our complete collection of premium Kashmiri products, 
+            Discover our complete collection of premium Kashmiri products,
             sourced directly from the valleys of Kashmir.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function ShopPage() {
           <div className="lg:w-64 mb-8 lg:mb-0">
             <div className="bg-white rounded-lg p-6 shadow-sm">
               <h2 className="font-semibold text-lg mb-4">Filters</h2>
-              
+
               {/* Categories */}
               <div className="mb-6">
                 <h3 className="font-medium mb-3">Categories</h3>
@@ -131,7 +131,7 @@ export default function ShopPage() {
                 <h2 className="text-2xl font-semibold text-gray-900">All Products</h2>
                 <p className="text-gray-600 mt-1">{sampleProducts.length} products found</p>
               </div>
-              
+
               <div className="flex items-center gap-4">
                 <select className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-saffron-500 focus:border-saffron-500">
                   <option>Sort by: Newest</option>
@@ -140,7 +140,7 @@ export default function ShopPage() {
                   <option>Name: A to Z</option>
                   <option>Best Rated</option>
                 </select>
-                
+
                 <div className="flex items-center gap-2">
                   <button className="p-2 border border-gray-300 rounded hover:bg-gray-50">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,11 +174,10 @@ export default function ShopPage() {
                 {[1, 2, 3].map((page) => (
                   <button
                     key={page}
-                    className={`px-3 py-2 rounded ${
-                      page === 1
+                    className={`px-3 py-2 rounded ${page === 1
                         ? 'bg-saffron-500 text-white'
                         : 'text-gray-600 hover:text-saffron-600 hover:bg-saffron-50'
-                    }`}
+                      }`}
                   >
                     {page}
                   </button>

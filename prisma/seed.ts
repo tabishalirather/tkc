@@ -29,31 +29,31 @@ async function main() {
       name: 'Saffron',
       slug: 'saffron',
       description: 'Premium Kashmiri Saffron - The world\'s most precious spice',
-      image: 'https://placehold.co/400x300/E8A838/ffffff?text=Saffron'
+      image: 'https://images.unsplash.com/photo-1611071536598-9b7d8f15189f?auto=format&fit=crop&w=1200&q=80'
     },
     {
       name: 'Shilajit',
       slug: 'shilajit',
       description: 'Pure Himalayan Shilajit - Ancient wellness supplement',
-      image: 'https://placehold.co/400x300/5C3A1E/ffffff?text=Shilajit'
+      image: 'https://images.unsplash.com/photo-1603048719539-9ecb4f1f5f9a?auto=format&fit=crop&w=1200&q=80'
     },
     {
       name: 'Walnuts',
       slug: 'walnuts',
       description: 'Fresh Kashmiri Walnuts - Premium quality nuts',
-      image: 'https://placehold.co/400x300/C17B2A/ffffff?text=Walnuts'
+      image: 'https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=1200&q=80'
     },
     {
       name: 'Honey',
       slug: 'honey',
       description: 'Wild Forest Honey from Kashmir valleys',
-      image: 'https://placehold.co/400x300/F4D673/ffffff?text=Honey'
+      image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1200&q=80'
     },
     {
       name: 'Almonds',
       slug: 'almonds',
       description: 'Premium Kashmiri Almonds - Rich and nutritious',
-      image: 'https://placehold.co/400x300/9A6E1C/ffffff?text=Almonds'
+      image: 'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=1200&q=80'
     }
   ]
 
@@ -61,7 +61,11 @@ async function main() {
     categories.map(category =>
       prisma.category.upsert({
         where: { slug: category.slug },
-        update: {},
+        update: {
+          name: category.name,
+          description: category.description,
+          image: category.image,
+        },
         create: category,
       })
     )
@@ -81,9 +85,9 @@ async function main() {
       stock: 50,
       categoryId: createdCategories[0].id,
       images: [
-        'https://placehold.co/600x600/E8A838/ffffff?text=Saffron+1',
-        'https://placehold.co/600x600/F4D673/ffffff?text=Saffron+2',
-        'https://placehold.co/600x600/C18B2A/ffffff?text=Saffron+3'
+        'https://images.unsplash.com/photo-1611071536598-9b7d8f15189f?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1599599810769-bcde5a160d32?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1610725664285-7c57e6eeac3f?auto=format&fit=crop&w=1200&q=80'
       ],
       badges: ['Premium', 'Organic', 'Handpicked'],
       origin: 'Kashmir, India',
@@ -132,9 +136,9 @@ async function main() {
       stock: 25,
       categoryId: createdCategories[1].id,
       images: [
-        'https://placehold.co/600x600/5C3A1E/ffffff?text=Shilajit+1',
-        'https://placehold.co/600x600/3D2A16/ffffff?text=Shilajit+2',
-        'https://placehold.co/600x600/7C542C/ffffff?text=Shilajit+3'
+        'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80'
       ],
       badges: ['Pure', 'Lab Tested', 'Himalayan'],
       origin: 'Kashmir Himalayas',
@@ -155,9 +159,9 @@ async function main() {
       stock: 100,
       categoryId: createdCategories[2].id,
       images: [
-        'https://placehold.co/600x600/C17B2A/ffffff?text=Walnuts+1',
-        'https://placehold.co/600x600/9A6E1C/ffffff?text=Walnuts+2',
-        'https://placehold.co/600x600/D7C3AF/ffffff?text=Walnuts+3'
+        'https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1516826957135-700dedea698c?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1566595006955-1b6f0f78abf1?auto=format&fit=crop&w=1200&q=80'
       ],
       badges: ['Fresh', 'Premium', 'Natural'],
       origin: 'Kashmir Valley',
@@ -206,9 +210,9 @@ async function main() {
       stock: 75,
       categoryId: createdCategories[3].id,
       images: [
-        'https://placehold.co/600x600/F4D673/ffffff?text=Honey+1',
-        'https://placehold.co/600x600/E8A838/ffffff?text=Honey+2',
-        'https://placehold.co/600x600/C18B2A/ffffff?text=Honey+3'
+        'https://images.unsplash.com/photo-1587049352851-8d4e89133924?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1471943311424-646960669fbc?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=1200&q=80'
       ],
       badges: ['Raw', 'Unprocessed', 'Wild'],
       origin: 'Kashmir Forests',
@@ -249,9 +253,9 @@ async function main() {
       stock: 80,
       categoryId: createdCategories[4].id,
       images: [
-        'https://placehold.co/600x600/9A6E1C/ffffff?text=Almonds+1',
-        'https://placehold.co/600x600/C17B2A/ffffff?text=Almonds+2',
-        'https://placehold.co/600x600/D7C3AF/ffffff?text=Almonds+3'
+        'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1516617442634-75371039cb3a?auto=format&fit=crop&w=1200&q=80',
+        'https://images.unsplash.com/photo-1471640417163-36c31bb4cf33?auto=format&fit=crop&w=1200&q=80'
       ],
       badges: ['Premium', 'Sweet', 'Natural'],
       origin: 'Kashmir Valley',
@@ -293,9 +297,28 @@ async function main() {
   ]
 
   for (const product of products) {
+    const { variants, ...productData } = product
+
     await prisma.product.upsert({
       where: { slug: product.slug },
-      update: {},
+      update: {
+        name: productData.name,
+        description: productData.description,
+        shortDescription: productData.shortDescription,
+        price: productData.price,
+        discountPrice: productData.discountPrice,
+        stock: productData.stock,
+        categoryId: productData.categoryId,
+        images: productData.images,
+        badges: productData.badges,
+        origin: productData.origin,
+        benefits: productData.benefits,
+        usage: productData.usage,
+        ingredients: productData.ingredients,
+        sku: productData.sku,
+        isFeatured: productData.isFeatured,
+        isBestseller: productData.isBestseller,
+      },
       create: product,
     })
   }
@@ -307,7 +330,7 @@ async function main() {
     {
       name: 'Priya Sharma',
       location: 'Delhi, India',
-      avatar: 'https://placehold.co/100x100/E8A838/ffffff?text=PS',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80',
       text: 'The saffron quality is exceptional! I can taste the authentic Kashmir flavor in every dish. The packaging was excellent and delivery was prompt.',
       rating: 5,
       isActive: true
@@ -315,7 +338,7 @@ async function main() {
     {
       name: 'Rajesh Kumar',
       location: 'Mumbai, India',
-      avatar: 'https://placehold.co/100x100/2D5016/ffffff?text=RK',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
       text: 'Amazing quality shilajit! I have been using it for 3 months and feel much more energetic. Genuine product at reasonable price.',
       rating: 5,
       isActive: true
@@ -323,7 +346,7 @@ async function main() {
     {
       name: 'Anjali Gupta',
       location: 'Bangalore, India',
-      avatar: 'https://placehold.co/100x100/C17B2A/ffffff?text=AG',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80',
       text: 'Best walnuts I have ever tasted! Fresh, crunchy, and perfectly packaged. My family loves them. Will definitely order again.',
       rating: 5,
       isActive: true
@@ -331,7 +354,7 @@ async function main() {
     {
       name: 'Vikram Singh',
       location: 'Chandigarh, India',
-      avatar: 'https://placehold.co/100x100/5C3A1E/ffffff?text=VS',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
       text: 'The wild honey is pure and delicious. You can taste the natural flavor and it has helped with my seasonal allergies. Highly recommended!',
       rating: 4,
       isActive: true
@@ -339,7 +362,7 @@ async function main() {
     {
       name: 'Meera Reddy',
       location: 'Hyderabad, India',
-      avatar: 'https://placehold.co/100x100/9A6E1C/ffffff?text=MR',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
       text: 'Excellent almonds! Sweet and fresh. I use them daily in my morning routine. Great quality and fast shipping.',
       rating: 5,
       isActive: true
@@ -347,7 +370,7 @@ async function main() {
     {
       name: 'Arjun Mehta',
       location: 'Pune, India',
-      avatar: 'https://placehold.co/100x100/F4D673/ffffff?text=AM',
+      avatar: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=300&q=80',
       text: 'Authentic Kashmiri products with great quality. The customer service is also excellent. TKC has become my go-to store for premium products.',
       rating: 5,
       isActive: true
@@ -357,7 +380,13 @@ async function main() {
   for (const testimonial of testimonials) {
     await prisma.testimonial.upsert({
       where: { id: `testimonial-${testimonial.name.toLowerCase().replace(/\s+/g, '-')}` },
-      update: {},
+      update: {
+        location: testimonial.location,
+        avatar: testimonial.avatar,
+        text: testimonial.text,
+        rating: testimonial.rating,
+        isActive: testimonial.isActive,
+      },
       create: testimonial,
     })
   }

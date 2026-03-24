@@ -1,11 +1,9 @@
 'use client'
 
-import { Product, ProductVariant } from '@/types'
+import { Product } from '@/types'
 import { useCartStore } from '@/store/cartStore'
 import { useWishlistStore } from '@/store/wishlistStore'
 import Button from '@/components/ui/Button'
-import Badge from '@/components/ui/Badge'
-import StarRating from '@/components/ui/StarRating'
 import Link from 'next/link'
 
 interface ProductCardProps {
@@ -23,125 +21,100 @@ export default function ProductCard({ product }: ProductCardProps) {
   const handleWishlistToggle = () => {
     if (isInWishlist(product.id)) {
       removeFromWishlist(product.id)
-    } else {
-      addToWishlist(product)
+      return
     }
+    addToWishlist(product)
   }
 
-  const discountPercentage = product.discountPrice 
+  const discountPercentage = product.discountPrice
     ? Math.round(((product.price - product.discountPrice) / product.price) * 100)
     : null
 
   return (
-    <div className="product-card group bg-white rounded-xl border border-gray-200 overflow-hidden">
-      {/* Image */}
-      <div className="relative aspect-square overflow-hidden">
+    <article className="group overflow-hidden rounded-sm border border-black/10 bg-white transition duration-200 hover:border-black/25">
+      <div className="relative aspect-[5/4] overflow-hidden bg-[#eceae6]">
         <Link href={`/product/${product.slug}`}>
           <img
-            src={product.images[0] || 'https://placehold.co/400x400'}
+            src={product.images[0] || 'https://images.unsplash.com/photo-1615485737651-8f1f653bb9f6?auto=format&fit=crop&w=900&q=80'}
             alt={product.name}
-            className="product-image w-full h-full object-cover"
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
           />
         </Link>
-        
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {product.isFeatured && (
-            <Badge variant="warning">Featured</Badge>
-          )}
-          {product.isBestseller && (
-            <Badge variant="success">Bestseller</Badge>
+
+        <div className="absolute left-3 top-3 flex items-center gap-2">
+          {product.badges.length > 0 && (
+            <span className="bg-white/95 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-walnut-700">
+              {product.badges[0]}
+            </span>
           )}
           {discountPercentage && (
-            <Badge variant="danger">{discountPercentage}% OFF</Badge>
+            <span className="bg-walnut-900 px-2 py-1 text-[11px] font-semibold text-white">
+              {discountPercentage}% OFF
+            </span>
           )}
-          {product.badges.map((badge, index) => (
-            <Badge key={index}>{badge}</Badge>
-          ))}
         </div>
 
-        {/* Wishlist button */}
         <button
           onClick={handleWishlistToggle}
-          className={`absolute top-3 right-3 p-2 rounded-full transition-colors ${
+          className={`absolute right-3 top-3 rounded-full p-2 transition-colors ${
             isInWishlist(product.id)
               ? 'bg-red-500 text-white'
-              : 'bg-white/80 text-gray-600 hover:bg-white hover:text-red-500'
+              : 'bg-white/80 text-walnut-700 hover:bg-white hover:text-red-500'
           }`}
+          aria-label="Toggle wishlist"
         >
           <svg className="w-4 h-4" fill={isInWishlist(product.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
         </button>
-
-        {/* Quick view overlay */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <Link href={`/product/${product.slug}`}>
-            <Button variant="secondary">Quick View</Button>
-          </Link>
-        </div>
       </div>
 
-      {/* Content */}
       <div className="p-4">
-        <div className="mb-2">
-          <Link href={`/product/${product.slug}`} className="hover:text-saffron-600 transition-colors">
-            <h3 className="font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
+        <div className="mb-3">
+          <Link href={`/product/${product.slug}`} className="transition-colors hover:text-saffron-700">
+            <h3 className="line-clamp-2 font-medium text-walnut-900">{product.name}</h3>
           </Link>
           {product.shortDescription && (
-            <p className="text-sm text-gray-600 mt-1 line-clamp-2">{product.shortDescription}</p>
+            <p className="mt-1 line-clamp-2 text-sm text-walnut-600">{product.shortDescription}</p>
           )}
         </div>
 
-        {/* Rating */}
         {product.averageRating && (
-          <div className="flex items-center gap-2 mb-2">
-            <StarRating rating={product.averageRating} size="sm" readOnly />
-            <span className="text-sm text-gray-500">({product._count?.reviews || 0})</span>
+          <div className="mb-2 flex items-center gap-1 text-xs text-walnut-600">
+            <svg className="h-4 w-4 text-saffron-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span>{product.averageRating}</span>
+            <span>({product._count?.reviews || 0})</span>
           </div>
         )}
 
-        {/* Price */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-lg font-bold text-saffron-600">
+        <div className="mb-3 flex items-center gap-2">
+          <span className="text-base font-semibold text-walnut-900">
             ₹{product.discountPrice ? product.discountPrice.toFixed(2) : product.price.toFixed(2)}
           </span>
           {product.discountPrice && (
-            <span className="text-sm text-gray-500 line-through">
+            <span className="text-xs text-walnut-500 line-through">
               ₹{product.price.toFixed(2)}
             </span>
           )}
         </div>
 
-        {/* Stock status */}
-        {product.stock > 0 ? (
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-            <span className="text-sm text-green-600">In Stock ({product.stock} left)</span>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-            <span className="text-sm text-red-600">Out of Stock</span>
-          </div>
-        )}
-
-        {/* Actions */}
         <div className="space-y-2">
           <Button
             className="w-full"
             onClick={handleAddToCart}
             disabled={product.stock === 0}
           >
-            {product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+            {product.stock > 0 ? 'Add to cart' : 'Out of stock'}
           </Button>
           <Link href={`/product/${product.slug}`}>
-            <Button variant="outline" className="w-full">
-              View Details
+            <Button variant="ghost" className="w-full">
+              View details
             </Button>
           </Link>
         </div>
       </div>
-    </div>
+    </article>
   )
 }
