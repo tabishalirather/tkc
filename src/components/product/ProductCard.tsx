@@ -56,11 +56,10 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <button
           onClick={handleWishlistToggle}
-          className={`absolute right-3 top-3 rounded-full p-2 transition-colors ${
-            isInWishlist(product.id)
+          className={`absolute right-3 top-3 rounded-full p-2 transition-colors ${isInWishlist(product.id)
               ? 'bg-red-500 text-white'
               : 'bg-white/80 text-walnut-700 hover:bg-white hover:text-red-500'
-          }`}
+            }`}
           aria-label="Toggle wishlist"
         >
           <svg className="w-4 h-4" fill={isInWishlist(product.id) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
